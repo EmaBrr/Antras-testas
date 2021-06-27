@@ -99,3 +99,54 @@ function lastRow() {
 }
 
 lastRow();
+
+
+//list of months:
+
+let incomeMonth = [];
+let expenseMonth = [];
+
+function listOfMonths() {
+    for (let index = 0; index < arrayForTable.length; index++) {
+        if (arrayForTable[index].income !== 0) {
+            incomeMonth.push(arrayForTable[index].income);
+        };
+        if (arrayForTable[index].expense !== 0) {
+            expenseMonth.push(arrayForTable[index].expense);
+        };
+    }
+
+    for (let index = 0; index < arrayForTable.length; index++) {
+        if (Math.min.apply(Math, incomeMonth) == arrayForTable[index].income) {
+            document.getElementById("minIncome").innerHTML = `
+            <div  class="value">${arrayForTable[index].nameOfMonth}</div>
+            <div class="title">mėnuo, kai buvo mažiausiai uždirbta, bet ne lygu nuliui</div>`;
+        }
+    }
+
+    for (let index = 0; index < arrayForTable.length; index++) {
+        if (Math.max.apply(Math, incomeMonth) == arrayForTable[index].income) {
+            document.getElementById("maxIncome").innerHTML = `
+            <div  class="value">${arrayForTable[index].nameOfMonth}</div>
+            <div class="title">mėnuo, kai buvo daugiausiai uždirbta</div>`;
+        }
+    }
+
+    for (let index = 0; index < arrayForTable.length; index++) {
+        if (Math.min.apply(Math, expenseMonth) == arrayForTable[index].expense) {
+            document.getElementById("minExpense").innerHTML = `
+            <div  class="value">${arrayForTable[index].nameOfMonth}</div>
+            <div class="title">mėnuo, kai buvo mažiausiai išlaidos, bet ne lygios nuliui</div>`;
+        }
+    }
+
+    for (let index = 0; index < arrayForTable.length; index++) {
+        if (Math.max.apply(Math, expenseMonth) == arrayForTable[index].expense) {
+            document.getElementById("maxExpense").innerHTML = `
+            <div  class="value">${arrayForTable[index].nameOfMonth}</div>
+            <div class="title">mėnuo, kai buvo didžiausios išlaidos</div>`;
+        }
+    }
+}
+
+listOfMonths();
